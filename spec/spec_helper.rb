@@ -1,6 +1,7 @@
 require_relative "../lib/row"
 require_relative "../lib/theatre"
 require_relative "../lib/text_parser"
+require_relative "../lib/booking"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

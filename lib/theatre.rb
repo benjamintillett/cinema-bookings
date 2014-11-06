@@ -11,7 +11,4 @@ class Theatre
 		number_of_rows.times { @rows << Row.new }
 	end
 
-
-
-
 end
