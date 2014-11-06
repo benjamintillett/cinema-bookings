@@ -1,4 +1,5 @@
 require_relative "../lib/row"
+require_relative "../lib/theatre"
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

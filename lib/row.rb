@@ -2,7 +2,7 @@ class Row
 
 	attr_accessor :seats
 
-	def initialize(number_of_seats)
+	def initialize(number_of_seats = 50)
 		@seats = Array.new(50,false)
 	end
 
