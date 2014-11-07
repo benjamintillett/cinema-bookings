@@ -14,7 +14,7 @@ describe Row do
 
 	it "can book a seat" do 
 		expect(empty_seat).to receive(:book!)
-		row.book_seat2!(1)
+		row.book_seat!(1)
 	end
 
 
@@ -34,7 +34,7 @@ describe Row do
 			allow(row).to receive(:seat).with(5).and_return(seat_five)						
 			expect(seat_four).to receive(:book!)
 			expect(seat_five).to receive(:book!)
-			row.book_seats2!(seats_request1)
+			row.book_seats!(seats_request1)
 		end
 
 		it "knows a request for seats 4 and 5 is available" do 
