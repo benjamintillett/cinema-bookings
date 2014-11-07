@@ -22,4 +22,21 @@ describe Row do
 		expect(row.seat_booked?(0)).to eq true
 	end
 
+	context "an empty row" do 
+
+		let(:requested_seats) { [4,5] }
+
+		it "can book requested seats " do 
+			expect(row.book_seats!(requested_seats)).to eq true			
+		end
+
+		it "the seats are booked after booking" do 
+			row.book_seats!(requested_seats)
+			requested_seats.each do |seat_number|
+				expect(row.seat_booked?(seat_number)).to eq true
+			end
+		end
+
+	end
+
 end

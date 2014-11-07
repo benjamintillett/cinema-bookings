@@ -18,4 +18,9 @@ class Row
 		self.seats[seat_number] = !seats[seat_number] 
 	end
 
+	def book_seats!(seat_numbers)
+		seat_numbers.each { |seat_number| book_seat!(seat_number) } 
+		true
+	end
+
 end
