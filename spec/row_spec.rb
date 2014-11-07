@@ -1,7 +1,5 @@
 describe Row do 
 
-	let(:seat) { double :seat}
-	let(:seats) { Array.new(50).map { |elt| seat } }		
 	let(:row) { Row.new(50) }
 
 
@@ -27,6 +25,7 @@ describe Row do
 		let(:seats_request) { [4,5] }
 		let(:unavailable_seats_request) { [1,2] }
 		let(:unavailable_seats_request2) { [47,48] }
+		
 		it "can book requested seats " do 
 			expect(row.book_seats!(seats_request)).to eq true			
 		end
@@ -45,7 +44,20 @@ describe Row do
 		it "rejects seat request that start end at 48" do 
 			expect(row.book_seats!(unavailable_seats_request2)).to eq false			
 		end
+	end
 
+	context "a non empty row" do 
+
+		let(:non_empty_row) { Row.new(50) }
+		let(:unavailable_seats_request3) { [2,4] }
+
+		before do 
+			non_empty_row.book_seat!(4)						
+		end
+
+		it "rejects a request that contains 4" do
+			expect(non_empty_row.book_seats!(unavailable_seats_request3)).to eq false			
+		end
 	end
 
 end
