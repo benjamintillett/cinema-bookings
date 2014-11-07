@@ -50,7 +50,8 @@ describe Row do
 
 		let(:non_empty_row) { Row.new(50) }
 		let(:unavailable_seats_request3) { [2,4] }
-
+		let(:unavailable_seats_request4) { [6,10] }
+		let(:unavailable_seats_request5) { [0,2] }
 		before do 
 			non_empty_row.book_seat!(4)						
 		end
@@ -58,6 +59,22 @@ describe Row do
 		it "rejects a request that contains 4" do
 			expect(non_empty_row.book_seats!(unavailable_seats_request3)).to eq false			
 		end
+
+		it "rejects a request that starts two above 4" do 
+			expect(non_empty_row.book_seats!(unavailable_seats_request4)).to eq false			
+		end
+
+		it "reject seats that end two below from 4" do 
+			expect(non_empty_row.book_seats!(unavailable_seats_request5)).to eq false
+		end 
+
 	end
 
 end
+
+
+
+
+
+
+

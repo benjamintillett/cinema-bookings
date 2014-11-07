@@ -25,16 +25,32 @@ class Row
 	end
 
 	def unavailable?(seat_numbers)
-		return true if leaves_single_seat?(seat_numbers) || contains_booked_seat?(seat_numbers)
+		return true if leaves_single_seat?(seat_numbers) 		|| 
+					   contains_booked_seat?(seat_numbers) 		||
+					   starts_two_above_booked?(seat_numbers)	||
+					   ends_two_bellow_booked?(seat_numbers)	
+					   
 	end
 
 	def leaves_single_seat?(seat_numbers)
 		true if seat_numbers[0] == 1 || seat_numbers[1] == 48
 	end
 
-	def contains_booked_seat?(seat_request)
-		seat_request.each { |seat| return true if seat_booked?(seat) }
+	def contains_booked_seat?(seats_request)
+		seats_request.each { |seat| return true if seat_booked?(seat) }
 		false
 	end
+
+	def starts_two_above_booked?(seats_request)
+		start_seat = seats_request[0]
+		seat_booked?(start_seat - 2)
+	end
+
+	def ends_two_bellow_booked?(seats_request)
+		end_seat = seats_request[1]
+		seat_booked?(end_seat + 2)
+	end
+
+
 
 end
