@@ -25,3 +25,5 @@ class Theatre
 	end
 
 end
+
+# raise "Seat unavailable" if unavailable?(seats_request)

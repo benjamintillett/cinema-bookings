@@ -12,6 +12,4 @@ describe Seat do
 		expect(seat).to be_booked 
 	end
 
-
-
 end
