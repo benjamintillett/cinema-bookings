@@ -49,9 +49,9 @@ describe Row do
 	context "a non empty row" do 
 
 		let(:non_empty_row) { Row.new(50) }
-		let(:unavailable_seats_request3) { [2,4] }
-		let(:unavailable_seats_request4) { [6,10] }
-		let(:unavailable_seats_request5) { [0,2] }
+		let(:unavailable_seats_request3) { [2,3,4,5] }
+		let(:unavailable_seats_request4) { [6,7,8,9,10] }
+		let(:unavailable_seats_request5) { [0,1,2] }
 		before do 
 			non_empty_row.book_seat!(4)						
 		end
