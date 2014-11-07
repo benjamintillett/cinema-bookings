@@ -24,17 +24,26 @@ describe Row do
 
 	context "an empty row" do 
 
-		let(:requested_seats) { [4,5] }
-
+		let(:seats_request) { [4,5] }
+		let(:unavailable_seats_request) { [1,2] }
+		let(:unavailable_seats_request2) { [47,48] }
 		it "can book requested seats " do 
-			expect(row.book_seats!(requested_seats)).to eq true			
+			expect(row.book_seats!(seats_request)).to eq true			
 		end
 
 		it "the seats are booked after booking" do 
-			row.book_seats!(requested_seats)
-			requested_seats.each do |seat_number|
+			row.book_seats!(seats_request)
+			seats_request.each do |seat_number|
 				expect(row.seat_booked?(seat_number)).to eq true
 			end
+		end
+
+		it "rejects seat request that start at 1" do 
+			expect(row.book_seats!(unavailable_seats_request)).to eq false			
+		end
+
+		it "rejects seat request that start end at 48" do 
+			expect(row.book_seats!(unavailable_seats_request2)).to eq false			
 		end
 
 	end

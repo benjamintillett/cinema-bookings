@@ -19,8 +19,18 @@ class Row
 	end
 
 	def book_seats!(seat_numbers)
+		return false if unavailable?(seat_numbers)
 		seat_numbers.each { |seat_number| book_seat!(seat_number) } 
 		true
 	end
+
+	def unavailable?(seat_numbers)
+		return true if leaves_single_seat?(seat_numbers)
+	end
+
+	def leaves_single_seat?(seat_numbers)
+		true if seat_numbers[0] == 1 || seat_numbers[1] == 48
+	end
+
 
 end
